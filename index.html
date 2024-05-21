@@ -101,23 +101,14 @@
       >
     </main>
     <script>
-      fetch(
-        'http://ip-api.com/json/?fields=status,message,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,isp,org,as,query'
-      )
+      fetch('https://ipinfo.io/json?token=306f101d08474c')
         .then((response) => response.json())
         .then((data) => {
-          if (data.status === 'success') {
-            const ipInfoRow = document.querySelector('#ip-table tr:last-child')
-            ipInfoRow.cells[0].textContent = data.query // IP Address
-            let locationDetail = `${data.city}, ${data.country}`
-            ipInfoRow.cells[1].textContent = locationDetail // Location
-            ipInfoRow.cells[2].textContent = data.isp // ISP
-          } else {
-            const ipInfoRow = document.querySelector('#ip-table tr:last-child')
-            ipInfoRow.cells[0].textContent = 'Unavailable'
-            ipInfoRow.cells[1].textContent = 'Unavailable'
-            ipInfoRow.cells[2].textContent = 'Unavailable'
-          }
+          const ipInfoRow = document.querySelector('#ip-table tr:last-child')
+          ipInfoRow.cells[0].textContent = data.ip // IP Address
+          let locationDetail = `${data.city}, ${data.region}, ${data.country}`
+          ipInfoRow.cells[1].textContent = locationDetail // Location
+          ipInfoRow.cells[2].textContent = data.org // ISP
         })
         .catch((error) => {
           console.error('Error fetching IP data:', error)
