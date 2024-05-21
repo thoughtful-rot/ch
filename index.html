@@ -108,7 +108,7 @@
           ipInfoRow.cells[0].textContent = data.ip // IP Address
           let locationDetail = `${data.city}, ${data.region}, ${data.country}`
           ipInfoRow.cells[1].textContent = locationDetail // Location
-          ipInfoRow.cells[2].textContent = data.org // ISP
+          ipInfoRow.cells[2].textContent = data.asn.name // ISP
         })
         .catch((error) => {
           console.error('Error fetching IP data:', error)
