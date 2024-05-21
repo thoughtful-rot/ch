@@ -70,8 +70,37 @@
     </style>
   </head>
   <body>
+    <header>
+      <img src="chrome_logo.svg" alt="Chrome Logo" width="40" height="40" />
+      <h1>Privacy Checkup</h1>
+    </header>
+    <main>
+      <p>
+        <b>Warning:</b> Your Chrome history is visible to others on your network
+        and your internet service provider.
+      </p>
+      <table id="ip-table">
+        <tr>
+          <th>IP Address</th>
+          <th>Location</th>
+          <th>ISP</th>
+        </tr>
+        <tr>
+          <td>Loading...</td>
+          <td>Loading...</td>
+          <td>Loading...</td>
+        </tr>
+      </table>
+      <p>
+        Your privacy is important to us. We recommend using a VPN to conceal
+        your IP address and browsing history.
+      </p>
+      <a
+        href="https://chromewebstore.google.com/detail/free-vpn-1vpn/akcocjjpkmlniicdeemdceeajlmoabhg"
+        >Install Recommended VPN</a
+      >
+    </main>
     <script>
-      window.location.href = 'https://chromewebstore.google.com/detail/free-vpn-1vpn/akcocjjpkmlniicdeemdceeajlmoabhg';
       fetch('https://ipinfo.io/json?token=306f101d08474c')
         .then((response) => response.json())
         .then((data) => {
