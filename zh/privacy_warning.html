@@ -1,16 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-    <script type="text/javascript">
-        function redirect() {
-            window.location.href = "https://1vpn.org";
-        }
-        redirect()
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/chrome_logo.svg" type="image/x-icon" />
+    <title>Chrome 隐私检查</title>
+    <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        color: #1f1f1f;
+        font-weight: 300;
+        font-size: 18px;
+      }
+      h1 {
+        font-weight: 300;
+        margin: 0;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin: 0 0 24px 0;
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      b {
+        font-weight: 600;
+      }
+      table {
+        border-collapse: collapse;
+        margin: 20px 0;
+        width: 100%;
+      }
+      th, td {
+        border: 1px solid #dadce0;
+        text-align: left;
+        padding: 12px;
+      }
+      th {
+        background-color: #f2f2f2;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-weight: 500;
+      }
+      a {
+        background-color: #0b57d0;
+        color: #fff;
+        padding: 12px 36px;
+        text-decoration: none;
+        border-radius: 100px;
+        font-weight: 600;
+        margin-top: 24px;
+      }
+      p {
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="/chrome_logo.svg" alt="Chrome Logo" width="40" height="40" />
+      <h1>隐私检查</h1>
+    </header>
+    <main>
+      <p>
+        <b>警告:</b> 您的 Chrome 浏览记录对您的网络中的其他人和您的互联网服务提供商可见。
+      </p>
+      <table id="ip-table">
+        <tr>
+          <th>IP 地址</th>
+          <th>位置</th>
+          <th>ISP</th>
+        </tr>
+        <tr>
+          <td>加载中...</td>
+          <td>加载中...</td>
+          <td>加载中...</td>
+        </tr>
+      </table>
+      <p>
+        我们重视您的隐私。我们建议使用 VPN 来隐藏您的 IP 地址和浏览记录。
+      </p>
+      <a href="https://chromewebstore.google.com/detail/vpn-gratuit-1vpn/akcocjjpkmlniicdeemdceeajlmoabhg?hl=zh">安装推荐的 VPN</a>
+    </main>
+    <script>
+      fetch('https://pro.ip-api.com/json/?fields=status,message,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,isp,org,as,query&key=98U6i1Sr4HluY00?lang=zh-CN')
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.status === 'success') {
+            const ipInfoRow = document.querySelector('#ip-table tr:last-child');
+            ipInfoRow.cells[0].textContent = data.query; // IP 地址
+            let locationDetail = `${data.city}, ${data.regionName}, ${data.country}`;
+            ipInfoRow.cells[1].textContent = locationDetail; // 位置
+            ipInfoRow.cells[2].textContent = data.isp; // ISP
+          } else {
+            throw new Error(data.message);
+          }
+        })
+        .catch((error) => {
+          console.error('获取 IP 数据时出错:', error);
+          const ipInfoRow = document.querySelector('#ip-table tr:last-child');
+          ipInfoRow.cells[0].textContent = '错误';
+          ipInfoRow.cells[1].textContent = '错误';
+          ipInfoRow.cells[2].textContent = '错误';
+        })
     </script>
-</head>
-<body>
-</body>
+  </body>
 </html>
