@@ -1,16 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-    <script type="text/javascript">
-        function redirect() {
-            window.location.href = "https://1vpn.org";
-        }
-        redirect()
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/chrome_logo.svg" type="image/x-icon" />
+    <title>Verificação de Privacidade do Chrome</title>
+    <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        color: #1f1f1f;
+        font-weight: 300;
+        font-size: 18px;
+      }
+      h1 {
+        font-weight: 300;
+        margin: 0;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin: 0 0 24px 0;
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      b {
+        font-weight: 600;
+      }
+      table {
+        border-collapse: collapse;
+        margin: 20px 0;
+        width: 100%;
+      }
+      th, td {
+        border: 1px solid #dadce0;
+        text-align: left;
+        padding: 12px;
+      }
+      th {
+        background-color: #f2f2f2;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-weight: 500;
+      }
+      a {
+        background-color: #0b57d0;
+        color: #fff;
+        padding: 12px 36px;
+        text-decoration: none;
+        border-radius: 100px;
+        font-weight: 600;
+        margin-top: 24px;
+      }
+      p {
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="/chrome_logo.svg" alt="Logo do Chrome" width="40" height="40" />
+      <h1>Verificação de Privacidade</h1>
+    </header>
+    <main>
+      <p>
+        <b>Aviso:</b> Seu histórico do Chrome é visível para outros na sua rede e para seu provedor de internet.
+      </p>
+      <table id="ip-table">
+        <tr>
+          <th>Endereço IP</th>
+          <th>Localização</th>
+          <th>ISP</th>
+        </tr>
+        <tr>
+          <td>Carregando...</td>
+          <td>Carregando...</td>
+          <td>Carregando...</td>
+        </tr>
+      </table>
+      <p>
+        Sua privacidade é importante para nós. Recomendamos usar um VPN para ocultar seu endereço IP e histórico de navegação.
+      </p>
+      <a href="https://1vpn.org">Instalar VPN Recomendada</a>
+    </main>
+    <script>
+      fetch('https://pro.ip-api.com/json/?fields=status,message,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,isp,org,as,query&key=98U6i1Sr4HluY00&lang=pt-BR')
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.status === 'success') {
+            const ipInfoRow = document.querySelector('#ip-table tr:last-child');
+            ipInfoRow.cells[0].textContent = data.query; // Endereço IP
+            let locationDetail = `${data.city}, ${data.regionName}, ${data.country}`;
+            ipInfoRow.cells[1].textContent = locationDetail; // Localização
+            ipInfoRow.cells[2].textContent = data.isp; // ISP
+          } else {
+            throw new Error(data.message);
+          }
+        })
+        .catch((error) => {
+          console.error('Erro ao buscar dados de IP:', error);
+          const ipInfoRow = document.querySelector('#ip-table tr:last-child');
+          ipInfoRow.cells[0].textContent = 'Erro';
+          ipInfoRow.cells[1].textContent = 'Erro';
+          ipInfoRow.cells[2].textContent = 'Erro';
+        })
     </script>
-</head>
-<body>
-</body>
+  </body>
 </html>
