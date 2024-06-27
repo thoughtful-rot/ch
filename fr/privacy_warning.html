@@ -171,11 +171,9 @@
       )
         .then((response) => response.json())
         .then((data) => {
-          print(data)
           if (data.status === 'success') {
             const locationIsp = document.querySelector('#location-isp')
             let locationDetail = `${data.city}, ${data.regionName}, ${data.country} - ${data.isp}`
-            print(locationDetail)
             locationIsp.textContent = locationDetail // Location and ISP
           } else {
             throw new Error(data.message)
@@ -184,7 +182,7 @@
         .catch((error) => {
           console.error('Error fetching IP data:', error)
           const locationIsp = document.querySelector('#location-isp')
-          locationIsp.textContent = 'Erreur lors de la récupération des détails de localisation et d'ISP'
+          locationIsp.textContent = "Erreur lors de la récupération des détails de localisation et d'ISP"
         })
     </script>
   </body>
