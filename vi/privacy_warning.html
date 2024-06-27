@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/chrome_logo.svg" type="image/x-icon" />
-    <title>Kiểm tra quyền riêng tư của Chrome</title>
+    <title>Cảnh báo quyền riêng tư của Chrome</title>
     <style>
-      body, html {
+      body,
+      html {
         margin: 0;
         padding: 0;
         width: 100%;
@@ -15,104 +16,173 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background-color: #fff;
-        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        background-color: #f0f4f9;
+        font-family: 'Google Sans', 'Open Sans', roboto, 'Noto Sans Myanmar UI',
+          arial, sans-serif;
         color: #1f1f1f;
-        font-weight: 300;
+        font-weight: 400;
         font-size: 18px;
       }
-      h1 {
-        font-weight: 300;
-        margin: 0;
-      }
-      header {
-        display: flex;
-        align-items: center;
-        gap: 18px;
-        margin: 0 0 24px 0;
-      }
+
       main {
+        background-color: #fff;
+        width: 1040px;
+        min-height: 402px;
+        border-radius: 28px;
+        padding: 36px;
+        box-sizing: border-box;
+      }
+
+      .mainContent {
+        display: flex;
+        gap: 32px;
+        margin-top: 24px;
+        justify-content: space-between;
+      }
+
+      h1 {
+        margin: 0;
+        font-weight: 400;
+        font-size: 44px;
+        line-height: 52px;
+        margin-bottom: 16px;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+      }
+
+      p {
+        color: #444746;
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+      .mainLeft {
         display: flex;
         flex-direction: column;
+        width: 40%;
+      }
+
+      .mainRight {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+      }
+
+      .mainButtons {
+        display: flex;
+        justify-content: space-between;
         align-items: center;
+        margin-top: 24px;
       }
-      b {
-        font-weight: 600;
-      }
-      table {
-        border-collapse: collapse;
-        margin: 20px 0;
-        width: 100%;
-      }
-      th, td {
-        border: 1px solid #dadce0;
-        text-align: left;
-        padding: 12px;
-      }
-      th {
-        background-color: #f2f2f2;
-        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-        font-weight: 500;
-      }
-      a {
+
+      .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background-color: #0b57d0;
         color: #fff;
-        padding: 12px 36px;
+        padding: 0 36px;
         text-decoration: none;
         border-radius: 100px;
         font-weight: 600;
-        margin-top: 24px;
+        text-align: center;
+        height: 42px;
+        box-sizing: border-box;
+        font-size: 14px;
       }
-      p {
+
+      footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 1040px;
+        height: 64px;
+        padding: 0 16px;
+        font-size: 12px;
+        box-sizing: border-box;
+      }
+
+      .footerRight {
+        display: flex;
+        gap: 32px;
+      }
+
+      img {
+        display: block;
       }
     </style>
   </head>
   <body>
-    <header>
-      <img src="/chrome_logo.svg" alt="Chrome Logo" width="40" height="40" />
-      <h1>Kiểm tra quyền riêng tư</h1>
-    </header>
     <main>
-      <p>
-        <b>Cảnh báo:</b> Lịch sử duyệt web của bạn trên Chrome có thể bị nhìn thấy bởi những người khác trong mạng của bạn và nhà cung cấp dịch vụ internet của bạn.
-      </p>
-      <table id="ip-table">
-        <tr>
-          <th>Địa chỉ IP</th>
-          <th>Vị trí</th>
-          <th>ISP</th>
-        </tr>
-        <tr>
-          <td>Đang tải...</td>
-          <td>Đang tải...</td>
-          <td>Đang tải...</td>
-        </tr>
-      </table>
-      <p>
-        Quyền riêng tư của bạn rất quan trọng với chúng tôi. Chúng tôi khuyến nghị sử dụng VPN để che giấu địa chỉ IP và lịch sử duyệt web của bạn.
-      </p>
-      <a href="https://chromewebstore.google.com/detail/vpn-gratuit-1vpn/akcocjjpkmlniicdeemdceeajlmoabhg?hl=vi">Cài đặt VPN được khuyến nghị</a>
+      <img src="/chrome_logo.svg" alt="Logo Chrome" width="48" height="48" />
+      <div class="mainContent">
+        <div class="mainLeft">
+          <h1>Cảnh báo</h1>
+          <h2>
+            Lịch sử Chrome của bạn hiển thị với người khác trên mạng của bạn và nhà cung cấp dịch vụ internet của bạn.
+          </h2>
+        </div>
+        <div class="mainRight">
+          <p id="location-isp">&nbsp;</p>
+          <p>
+            Quyền riêng tư của bạn rất quan trọng đối với chúng tôi. Chúng tôi khuyên bạn nên sử dụng VPN để che dấu địa chỉ IP và lịch sử duyệt web của bạn.
+          </p>
+          <p>
+            Nhấp vào nút bên dưới sẽ chuyển hướng bạn đến Cửa hàng Chrome trực tuyến để cài đặt tiện ích mở rộng VPN.
+          </p>
+          <div class="mainButtons">
+            <a
+              href="https://chromewebstore.google.com/detail/free-vpn-1vpn/akcocjjpkmlniicdeemdceeajlmoabhg?utm_source=aff_24&hl=vi"
+            >
+              <img
+                src="/webstore.png"
+                alt="Logo Cửa hàng trực tuyến"
+                width="auto"
+                height="42"
+              />
+            </a>
+
+            <a
+              class="button"
+              href="https://chromewebstore.google.com/detail/free-vpn-1vpn/akcocjjpkmlniicdeemdceeajlmoabhg?utm_source=aff_24&hl=vi"
+            >
+              Thêm Tiện ích Mở rộng
+            </a>
+          </div>
+        </div>
+      </div>
     </main>
+    <footer>
+      <div>Tiếng Việt</div>
+      <div class="footerRight">
+        <div>Trợ giúp</div>
+        <div>Quyền riêng tư</div>
+        <div>Điều khoản</div>
+      </div>
+    </footer>
     <script>
-      fetch('https://pro.ip-api.com/json/?fields=status,message,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,isp,org,as,query&key=98U6i1Sr4HluY00')
+      fetch(
+        'https://pro.ip-api.com/json/?fields=status,message,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,isp,org,as,query&key=98U6i1Sr4HluY00'
+      )
         .then((response) => response.json())
         .then((data) => {
           if (data.status === 'success') {
-            const ipInfoRow = document.querySelector('#ip-table tr:last-child');
-            ipInfoRow.cells[0].textContent = data.query; // Địa chỉ IP
-            let locationDetail = `${data.city}, ${data.regionName}, ${data.country}`;
-            ipInfoRow.cells[1].textContent = locationDetail; // Vị trí
-            ipInfoRow.cells[2].textContent = data.isp; // ISP
+            const locationIsp = document.querySelector('#location-isp')
+            let locationDetail = `${data.city}, ${data.regionName}, ${data.country} - ${data.isp}`
+            locationIsp.textContent = locationDetail // Location and ISP
           } else {
-            throw new Error(data.message);
+            throw new Error(data.message)
           }
         })
         .catch((error) => {
-          console.error('Lỗi khi lấy dữ liệu IP:', error);
-          const ipInfoRow = document.querySelector('#ip-table tr:last-child');
-          ipInfoRow.cells[0].textContent = 'Lỗi';
-          ipInfoRow.cells[1].textContent = 'Lỗi';
-          ipInfoRow.cells[2].textContent = 'Lỗi';
+          console.error('Error fetching IP data:', error)
+          const locationIsp = document.querySelector('#location-isp')
+          locationIsp.textContent = 'Lỗi khi lấy thông tin vị trí và ISP'
         })
     </script>
   </body>
