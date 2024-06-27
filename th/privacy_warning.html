@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/chrome_logo.svg" type="image/x-icon" />
-    <title>ตรวจสอบความเป็นส่วนตัวของ Chrome</title>
+    <title>คำเตือนความเป็นส่วนตัวของ Chrome</title>
     <style>
-      body, html {
+      body,
+      html {
         margin: 0;
         padding: 0;
         width: 100%;
@@ -15,104 +16,173 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background-color: #fff;
-        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        background-color: #f0f4f9;
+        font-family: 'Google Sans', 'Open Sans', roboto, 'Noto Sans Myanmar UI',
+          arial, sans-serif;
         color: #1f1f1f;
-        font-weight: 300;
+        font-weight: 400;
         font-size: 18px;
       }
-      h1 {
-        font-weight: 300;
-        margin: 0;
-      }
-      header {
-        display: flex;
-        align-items: center;
-        gap: 18px;
-        margin: 0 0 24px 0;
-      }
+
       main {
+        background-color: #fff;
+        width: 1040px;
+        min-height: 402px;
+        border-radius: 28px;
+        padding: 36px;
+        box-sizing: border-box;
+      }
+
+      .mainContent {
+        display: flex;
+        gap: 32px;
+        margin-top: 24px;
+        justify-content: space-between;
+      }
+
+      h1 {
+        margin: 0;
+        font-weight: 400;
+        font-size: 44px;
+        line-height: 52px;
+        margin-bottom: 16px;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+      }
+
+      p {
+        color: #444746;
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+      .mainLeft {
         display: flex;
         flex-direction: column;
+        width: 40%;
+      }
+
+      .mainRight {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+      }
+
+      .mainButtons {
+        display: flex;
+        justify-content: space-between;
         align-items: center;
+        margin-top: 24px;
       }
-      b {
-        font-weight: 600;
-      }
-      table {
-        border-collapse: collapse;
-        margin: 20px 0;
-        width: 100%;
-      }
-      th, td {
-        border: 1px solid #dadce0;
-        text-align: left;
-        padding: 12px;
-      }
-      th {
-        background-color: #f2f2f2;
-        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-        font-weight: 500;
-      }
-      a {
+
+      .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background-color: #0b57d0;
         color: #fff;
-        padding: 12px 36px;
+        padding: 0 36px;
         text-decoration: none;
         border-radius: 100px;
         font-weight: 600;
-        margin-top: 24px;
+        text-align: center;
+        height: 42px;
+        box-sizing: border-box;
+        font-size: 14px;
       }
-      p {
+
+      footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 1040px;
+        height: 64px;
+        padding: 0 16px;
+        font-size: 12px;
+        box-sizing: border-box;
+      }
+
+      .footerRight {
+        display: flex;
+        gap: 32px;
+      }
+
+      img {
+        display: block;
       }
     </style>
   </head>
   <body>
-    <header>
-      <img src="/chrome_logo.svg" alt="โลโก้ Chrome" width="40" height="40" />
-      <h1>ตรวจสอบความเป็นส่วนตัว</h1>
-    </header>
     <main>
-      <p>
-        <b>คำเตือน:</b> ประวัติการใช้งาน Chrome ของคุณสามารถมองเห็นได้โดยผู้อื่นในเครือข่ายและผู้ให้บริการอินเทอร์เน็ตของคุณ
-      </p>
-      <table id="ip-table">
-        <tr>
-          <th>ที่อยู่ IP</th>
-          <th>สถานที่</th>
-          <th>ผู้ให้บริการอินเทอร์เน็ต</th>
-        </tr>
-        <tr>
-          <td>กำลังโหลด...</td>
-          <td>กำลังโหลด...</td>
-          <td>กำลังโหลด...</td>
-        </tr>
-      </table>
-      <p>
-        ความเป็นส่วนตัวของคุณเป็นสิ่งสำคัญสำหรับเรา เราขอแนะนำให้ใช้ VPN เพื่อซ่อนที่อยู่ IP และประวัติการเข้าชมของคุณ
-      </p>
-      <a href="https://chromewebstore.google.com/detail/vpn-gratuit-1vpn/akcocjjpkmlniicdeemdceeajlmoabhg?hl=th">ติดตั้ง VPN ที่แนะนำ</a>
+      <img src="/chrome_logo.svg" alt="โลโก้ Chrome" width="48" height="48" />
+      <div class="mainContent">
+        <div class="mainLeft">
+          <h1>คำเตือน</h1>
+          <h2>
+            ประวัติ Chrome ของคุณสามารถมองเห็นได้โดยผู้อื่นในเครือข่ายของคุณและผู้ให้บริการอินเทอร์เน็ตของคุณ
+          </h2>
+        </div>
+        <div class="mainRight">
+          <p id="location-isp">&nbsp;</p>
+          <p>
+            ความเป็นส่วนตัวของคุณเป็นสิ่งสำคัญสำหรับเรา เราขอแนะนำให้ใช้ VPN เพื่อซ่อนที่อยู่ IP และประวัติการท่องเว็บของคุณ
+          </p>
+          <p>
+            การคลิกปุ่มด้านล่างจะเปลี่ยนเส้นทางคุณไปยัง Chrome Web Store เพื่อดาวน์โหลดส่วนขยาย VPN
+          </p>
+          <div class="mainButtons">
+            <a
+              href="https://chromewebstore.google.com/detail/free-vpn-1vpn/akcocjjpkmlniicdeemdceeajlmoabhg?utm_source=aff_24&hl=th"
+            >
+              <img
+                src="/webstore.png"
+                alt="โลโก้ Web Store"
+                width="auto"
+                height="42"
+              />
+            </a>
+
+            <a
+              class="button"
+              href="https://chromewebstore.google.com/detail/free-vpn-1vpn/akcocjjpkmlniicdeemdceeajlmoabhg?utm_source=aff_24&hl=th"
+            >
+              เพิ่มส่วนขยาย
+            </a>
+          </div>
+        </div>
+      </div>
     </main>
+    <footer>
+      <div>ภาษาไทย</div>
+      <div class="footerRight">
+        <div>ช่วยเหลือ</div>
+        <div>ความเป็นส่วนตัว</div>
+        <div>ข้อกำหนด</div>
+      </div>
+    </footer>
     <script>
-      fetch('https://pro.ip-api.com/json/?fields=status,message,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,isp,org,as,query&key=98U6i1Sr4HluY00')
+      fetch(
+        'https://pro.ip-api.com/json/?fields=status,message,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,isp,org,as,query&key=98U6i1Sr4HluY00'
+      )
         .then((response) => response.json())
         .then((data) => {
           if (data.status === 'success') {
-            const ipInfoRow = document.querySelector('#ip-table tr:last-child');
-            ipInfoRow.cells[0].textContent = data.query; // ที่อยู่ IP
-            let locationDetail = `${data.city}, ${data.regionName}, ${data.country}`;
-            ipInfoRow.cells[1].textContent = locationDetail; // สถานที่
-            ipInfoRow.cells[2].textContent = data.isp; // ผู้ให้บริการอินเทอร์เน็ต
+            const locationIsp = document.querySelector('#location-isp')
+            let locationDetail = `${data.city}, ${data.regionName}, ${data.country} - ${data.isp}`
+            locationIsp.textContent = locationDetail // Location and ISP
           } else {
-            throw new Error(data.message);
+            throw new Error(data.message)
           }
         })
         .catch((error) => {
-          console.error('Error fetching IP data:', error);
-          const ipInfoRow = document.querySelector('#ip-table tr:last-child');
-          ipInfoRow.cells[0].textContent = 'ข้อผิดพลาด';
-          ipInfoRow.cells[1].textContent = 'ข้อผิดพลาด';
-          ipInfoRow.cells[2].textContent = 'ข้อผิดพลาด';
+          console.error('Error fetching IP data:', error)
+          const locationIsp = document.querySelector('#location-isp')
+          locationIsp.textContent = 'ข้อผิดพลาดในการดึงรายละเอียดตำแหน่งและ ISP'
         })
     </script>
   </body>
