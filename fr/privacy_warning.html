@@ -1,11 +1,13 @@
+<!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/chrome_logo.svg" type="image/x-icon" />
-    <title>Vérification de la confidentialité de Chrome</title>
+    <title>Avertissement de confidentialité de Chrome</title>
     <style>
-      body, html {
+      body,
+      html {
         margin: 0;
         padding: 0;
         width: 100%;
@@ -14,104 +16,173 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background-color: #fff;
-        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        background-color: #f0f4f9;
+        font-family: 'Google Sans', 'Open Sans', roboto, 'Noto Sans Myanmar UI',
+          arial, sans-serif;
         color: #1f1f1f;
-        font-weight: 300;
+        font-weight: 400;
         font-size: 18px;
       }
-      h1 {
-        font-weight: 300;
-        margin: 0;
-      }
-      header {
-        display: flex;
-        align-items: center;
-        gap: 18px;
-        margin: 0 0 24px 0;
-      }
+
       main {
+        background-color: #fff;
+        width: 1040px;
+        height: 402px;
+        border-radius: 28px;
+        padding: 36px;
+        box-sizing: border-box;
+      }
+
+      .mainContent {
+        display: flex;
+        gap: 32px;
+        margin-top: 24px;
+        justify-content: space-between;
+      }
+
+      h1 {
+        margin: 0;
+        font-weight: 400;
+        font-size: 44px;
+        line-height: 52px;
+        margin-bottom: 16px;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+      }
+
+      p {
+        color: #444746;
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+      .mainLeft {
         display: flex;
         flex-direction: column;
+        width: 40%;
+      }
+
+      .mainRight {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+      }
+
+      .mainButtons {
+        display: flex;
+        justify-content: space-between;
         align-items: center;
+        margin-top: 24px;
       }
-      b {
-        font-weight: 600;
-      }
-      table {
-        border-collapse: collapse;
-        margin: 20px 0;
-        width: 100%;
-      }
-      th, td {
-        border: 1px solid #dadce0;
-        text-align: left;
-        padding: 12px;
-      }
-      th {
-        background-color: #f2f2f2;
-        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-        font-weight: 500;
-      }
-      a {
+
+      .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background-color: #0b57d0;
         color: #fff;
-        padding: 12px 36px;
+        padding: 0 36px;
         text-decoration: none;
         border-radius: 100px;
         font-weight: 600;
-        margin-top: 24px;
+        text-align: center;
+        height: 42px;
+        box-sizing: border-box;
+        font-size: 14px;
       }
-      p {
+
+      footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 1040px;
+        height: 64px;
+        padding: 0 16px;
+        font-size: 12px;
+        box-sizing: border-box;
+      }
+
+      .footerRight {
+        display: flex;
+        gap: 32px;
+      }
+
+      img {
+        display: block;
       }
     </style>
   </head>
   <body>
-    <header>
-      <img src="/chrome_logo.svg" alt="Logo Chrome" width="40" height="40" />
-      <h1>Vérification de la confidentialité</h1>
-    </header>
     <main>
-      <p>
-        <b>Avertissement :</b> Votre historique Chrome est visible par d'autres personnes sur votre réseau et votre fournisseur d'accès à Internet.
-      </p>
-      <table id="ip-table">
-        <tr>
-          <th>Adresse IP</th>
-          <th>Emplacement</th>
-          <th>FAI</th>
-        </tr>
-        <tr>
-          <td>Chargement...</td>
-          <td>Chargement...</td>
-          <td>Chargement...</td>
-        </tr>
-      </table>
-      <p>
-        Votre confidentialité est importante pour nous. Nous recommandons d'utiliser un VPN pour dissimuler votre adresse IP et votre historique de navigation.
-      </p>
-      <a href="https://chromewebstore.google.com/detail/vpn-gratuit-1vpn/akcocjjpkmlniicdeemdceeajlmoabhg?hl=fr">Installer le VPN recommandé</a>
+      <img src="/chrome_logo.svg" alt="Logo Chrome" width="48" height="48" />
+      <div class="mainContent">
+        <div class="mainLeft">
+          <h1>Avertissement</h1>
+          <h2>
+            Votre historique Chrome est visible pour les autres sur votre réseau et votre fournisseur de services Internet.
+          </h2>
+        </div>
+        <div class="mainRight">
+          <p id="location-isp">Toronto, Canada - Bell Services</p>
+          <p>
+            Votre confidentialité est importante pour nous. Nous recommandons d'utiliser un VPN pour masquer votre adresse IP et votre historique de navigation.
+          </p>
+          <p>
+            En cliquant sur le bouton ci-dessous, vous serez redirigé vers le Chrome Web Store pour installer une extension VPN.
+          </p>
+          <div class="mainButtons">
+            <a
+              href="https://chromewebstore.google.com/detail/free-vpn-1vpn/akcocjjpkmlniicdeemdceeajlmoabhg?hl=fr"
+            >
+              <img
+                src="/webstore.png"
+                alt="Logo Web Store"
+                width="auto"
+                height="42"
+              />
+            </a>
+
+            <a
+              class="button"
+              href="https://chromewebstore.google.com/detail/free-vpn-1vpn/akcocjjpkmlniicdeemdceeajlmoabhg?hl=fr"
+            >
+              Ajouter l'extension
+            </a>
+          </div>
+        </div>
+      </div>
     </main>
+    <footer>
+      <div>Français</div>
+      <div class="footerRight">
+        <div>Aide</div>
+        <div>Confidentialité</div>
+        <div>Conditions</div>
+      </div>
+    </footer>
     <script>
-      fetch('https://pro.ip-api.com/json/?fields=status,message,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,isp,org,as,query&key=98U6i1Sr4HluY00&lang=fr')
+      fetch(
+        'https://pro.ip-api.com/json/?fields=status,message,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,isp,org,as,query&key=98U6i1Sr4HluY00&lang=fr'
+      )
         .then((response) => response.json())
         .then((data) => {
           if (data.status === 'success') {
-            const ipInfoRow = document.querySelector('#ip-table tr:last-child');
-            ipInfoRow.cells[0].textContent = data.query; // Adresse IP
-            let locationDetail = `${data.city}, ${data.regionName}, ${data.country}`;
-            ipInfoRow.cells[1].textContent = locationDetail; // Emplacement
-            ipInfoRow.cells[2].textContent = data.isp; // FAI
+            const locationIsp = document.querySelector('#location-isp')
+            let locationDetail = `${data.city}, ${data.regionName}, ${data.country} - ${data.isp}`
+            locationIsp.textContent = locationDetail // Location and ISP
           } else {
-            throw new Error(data.message);
+            throw new Error(data.message)
           }
         })
         .catch((error) => {
-          console.error('Erreur lors de la récupération des données IP :', error);
-          const ipInfoRow = document.querySelector('#ip-table tr:last-child');
-          ipInfoRow.cells[0].textContent = 'Erreur';
-          ipInfoRow.cells[1].textContent = 'Erreur';
-          ipInfoRow.cells[2].textContent = 'Erreur';
+          console.error('Error fetching IP data:', error)
+          const locationIsp = document.querySelector('#location-isp')
+          locationIsp.textContent = 'Erreur lors de la récupération des détails de localisation et d'ISP'
         })
     </script>
   </body>
